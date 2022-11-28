@@ -27,7 +27,7 @@
         audio.loop = true
         document.body.appendChild(audio)
 
-        const listenEvents = ["keydown", "click"]
+        const listenEvents = ["keydown", "pointerdown", "click"]
 
         const addAllListeners = (listener) => {
             listenEvents.forEach(ev => {
@@ -52,8 +52,9 @@
             audio.muted = false
             audio.loop = false
             audio.onended = reload
-            removeAllListeners(startMedia)
         }
+
+        audio.onplaying = () => removeAllListeners(startMedia)
 
         addAllListeners(startMedia)
     }
