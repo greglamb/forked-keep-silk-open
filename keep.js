@@ -13,6 +13,9 @@
     const alwaysUse = typeof AlwaysUseSilk != "undefined" && !!AlwaysUseSilk
 
     if (userAgent.includes("silk") || alwaysUse){
+
+        const visualMode = typeof SilkVisualMode != "undefined" && !!SilkVisualMode
+
         let source = document.currentScript.getAttribute("src")
         const lastDivider = source.lastIndexOf("/")
         source = source.slice(0, lastDivider + 1) + "media.mp3"
@@ -20,11 +23,10 @@
         const nowQuery = () => `?q=${Date.now()}`
 
         const audio = document.createElement("audio")
-        audio.controls = false
+        audio.controls = visualMode
         audio.src = source + nowQuery()
         audio.muted = true
         audio.autoplay = true
-        audio.loop = true
         document.body.appendChild(audio)
 
         const listenEvents = ["keydown", "pointerdown", "click"]
@@ -47,11 +49,11 @@
             audio.play()
         }
 
+        audio.onended = reload
+
         const startMedia = () => {
             reload()
             audio.muted = false
-            audio.loop = false
-            audio.onended = reload
         }
 
         audio.onplaying = () => removeAllListeners(startMedia)

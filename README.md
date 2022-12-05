@@ -37,6 +37,15 @@ https://dagammla.gitlab.io/keep-silk-open/test.html
 
 Usually your browser will timeout after ~10 minutes
 
+For debugging, it can be helpful to visualize the audio element.
+To do this, write the following:
+<script>
+    var AlwaysUseSilk = true
+    var SilkVisualMode = true
+</script>
+<script defer src="https://dagammla.gitlab.io/keep-silk-open/keep.js">
+</script>
+
 ---
 
 ## Experimental!
