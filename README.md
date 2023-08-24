@@ -28,6 +28,14 @@ This script will only execute on browsers with `Silk` in their User Agent. To ex
 </script>
 ```
 
+### Home Assistant Dashboard
+
+Some people like to use this script to display their [Home Assistant](https://www.home-assistant.io/) dashboard on their Echo Show device. For this you can embed this script into your dashboard via
+the Webpage/iframe card. Just add a new Webpage card to your dashboard with the following url:
+
+```
+https://dagammla.gitlab.io/keep-silk-open/iframe.html
+```
 ---
 ## Test
 
