@@ -1,3 +1,7 @@
+> 🛑 This is a backup of the original MIT Licensed [keep-silk-open](https://gitlab.com/DaGammla/keep-silk-open) found on GitLab.
+
+> ⚠️ Ko-fi links within this README point to the ORIGINAL AUTHOR.
+
 # Keep Silk Open!
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z7AO1BI)
 ## What is this?
