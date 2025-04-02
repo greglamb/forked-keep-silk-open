@@ -1,4 +1,4 @@
-> 🛑 This is a backup of the original MIT Licensed [keep-silk-open](https://gitlab.com/DaGammla/keep-silk-open) found on GitLab.
+> 🛑 This is a forked version of the original MIT Licensed [keep-silk-open](https://gitlab.com/DaGammla/keep-silk-open) found on GitLab. This has been slightly modified for my needs.
 
 > ⚠️ Ko-fi links within this README point to the ORIGINAL AUTHOR.
 
@@ -18,7 +18,7 @@ this script will play a completely silent audio file in the background of your w
 
 To use this script, your web page must embed this script tag somewhere in the document:
 ```html
-<script defer src="https://dagammla.gitlab.io/keep-silk-open/keep.js">
+<script defer src="https://greglamb.github.io/forked-keep-silk-open/keep.js">
 </script>
 ```
 
@@ -28,7 +28,7 @@ This script will only execute on browsers with `Silk` in their User Agent. To ex
 <script>
     var AlwaysUseSilk = true
 </script>
-<script defer src="https://dagammla.gitlab.io/keep-silk-open/keep.js">
+<script defer src="https://greglamb.github.io/forked-keep-silk-open/keep.js">
 </script>
 ```
 
@@ -38,14 +38,14 @@ Some people like to use this script to display their [Home Assistant](https://ww
 the Webpage/iframe card. Just add a new Webpage card to your dashboard with the following url:
 
 ```
-https://dagammla.gitlab.io/keep-silk-open/iframe.html
+https://greglamb.github.io/forked-keep-silk-open/ha.html
 ```
 ---
 ## Test
 
 Personally I could only test this on my Amazon Echo Show 5 2. Gen, but to test whether this will work on your Echo Show, visit this webpage:
 
-https://dagammla.gitlab.io/keep-silk-open/test.html
+https://greglamb.github.io/forked-keep-silk-open/test.html
 
 Usually your browser will timeout after ~10 minutes
 
@@ -56,7 +56,7 @@ To do this, write the following:
     var AlwaysUseSilk = true
     var SilkVisualMode = true
 </script>
-<script defer src="https://dagammla.gitlab.io/keep-silk-open/keep.js">
+<script defer src="https://greglamb.github.io/forked-keep-silk-open/keep.js">
 </script>
 ```
 
@@ -65,7 +65,7 @@ To do this, write the following:
 ## Experimental!
 Sometimes you might want to stay on a web page that is not developed by yourself. For this you need to add a bookmark with the following url:
 ```
-javascript:(()=>{document.body.appendChild(document.createElement("script")).src='https://dagammla.gitlab.io/keep-silk-open/keep.js';})();
+javascript:(()=>{document.body.appendChild(document.createElement("script")).src='https://greglamb.github.io/forked-keep-silk-open/keep.js';})();
 ```
 
 This is only experimental as most web pages will follow a strict Content Security Policy which will prohibit this script from executing.

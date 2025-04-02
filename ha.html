@@ -13,7 +13,6 @@
                 font-weight: bold;
             }
             #display {
-                border-radius: 12px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -29,16 +28,16 @@
                 display: none;
             }
             [data-state=paused]{
-                background-color: rgba(205, 20, 20, 0.61);
+                background-color: rgba(255, 59, 48, 1);
             }
             [data-state=paused] div::after{
-                content: "Click to keep page open";
+                content: "";
             }
             [data-state=playing]{
-                background-color: rgba(0, 193, 0, 0.55);
+                background-color: rgba(40, 205, 65, 1);
             }
             [data-state=playing] div::after{
-                content: "Page will stay open";
+                content: "";
             }
 
         </style>
