@@ -28,85 +28,73 @@
                 display: none;
             }
             [data-state=paused]{
-                background-color: rgba(255, 59, 48, 1);
+                background-color: rgba(40, 205, 65, .10);
             }
             [data-state=paused] div::after{
-                content: "";
+                content: "Sleep Enabled";
             }
             [data-state=playing]{
-                background-color: rgba(40, 205, 65, 1);
+                background-color: rgba(255, 59, 48, .10);
             }
             [data-state=playing] div::after{
-                content: "";
+                content: "Sleep Disabled";
             }
 
         </style>
     </head>
     <body>
-        <div id="display" data-state="undecided">
+        <div id="display" data-state="paused">
             <div></div>
         </div>
         <script>
-
             // --
-
             const nowMedia = () => `media.mp3?q=${Date.now()}`
 
             const audio = document.createElement("audio")
             audio.controls = false
             audio.src = nowMedia()
             audio.muted = true
-            audio.autoplay = true
+            audio.autoplay = false
+            audio.loop = true
             document.body.appendChild(audio)
-
-            const listenEvents = ["keydown", "pointerdown", "click"]
-
-            const addAllListeners = (listener) => {
-                listenEvents.forEach(ev => {
-                    document.addEventListener(ev, listener)
-                });
-            }
-
-            const removeAllListeners = (listener) => {
-                listenEvents.forEach(ev => {
-                    document.removeEventListener(ev, listener)
-                });
-            }
-
-            const reload = () => {
-                audio.src = nowMedia()
-                audio.currentTime = 0
-                audio.play()
-            }
-
-            audio.onended = reload
-
-            const startMedia = () => {
-                reload()
-                audio.muted = false
-            }
-
-            audio.onplaying = () => removeAllListeners(startMedia)
-
-            addAllListeners(startMedia)
-
-            // --
 
             const display = document.getElementById("display")
 
-            function checkAgain(){
-                window.setTimeout(() => {
-                    if (audio.paused){
-                        display.dataset.state = "paused"
-                        checkAgain()
-                    } else {
+            // Initialize as paused
+            display.dataset.state = "paused"
+
+            // Track if first click has happened
+            let firstClick = true
+
+            function toggleAudio() {
+                if (firstClick) {
+                    // First click - start audio
+                    audio.muted = false
+                    audio.play()
+                    display.dataset.state = "playing"
+                    firstClick = false
+                } else {
+                    // Subsequent clicks - toggle
+                    if (audio.paused) {
+                        audio.play()
                         display.dataset.state = "playing"
+                    } else {
+                        audio.pause()
+                        display.dataset.state = "paused"
                     }
-                }, 500);
+                }
             }
 
-            checkAgain()
+            // Handle clicks
+            document.addEventListener("click", toggleAudio)
 
+            // Handle keyboard accessibility
+            document.addEventListener("keydown", (e) => {
+                if (e.key === " " || e.key === "Enter") {
+                    e.preventDefault()
+                    toggleAudio()
+                }
+            })
         </script>
     </body>
 </html>
